@@ -22,6 +22,7 @@ set :bundle_flags, '--deployment --quiet'
 set :bundle_without, %w{development test}.join(' ')
 set :bundle_binstubs, -> { shared_path.join('bin') }
 set :bundle_roles, :all
+set :rake, 'bundle exec rake'
 
 # rvm
 set :rvm_type, :system
