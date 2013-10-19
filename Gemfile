@@ -46,6 +46,7 @@ gem 'e20_ops_middleware', :require => 'e20/ops/middleware'
 
 # Use debugger
 gem 'pry-debugger', group: [:development, :test]
+gem 'pry-stack_explorer', group: [:development, :test]
 gem 'better_errors', group: [:development, :test]
 
 gem 'devise'
