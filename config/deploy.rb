@@ -27,12 +27,11 @@ set :rake, 'bundle exec rake'
 # rvm
 set :rvm_type, :system
 set :rvm_ruby_version, '2.0.0'
-set :rails_env, 'production'
 
 namespace :deploy do
   task :prepare do
-    execute "(cd #{release_path} && RAILS_ENV=#{rails_env} bundle exec rake assets:precompile)"
-    execute "(cd #{release_path} && RAILS_ENV=#{rails_env} bundle exec rake db:migrate)"
+    execute "(cd #{release_path} && RAILS_ENV=production bundle exec rake assets:precompile)"
+    execute "(cd #{release_path} && RAILS_ENV=production bundle exec rake db:migrate)"
   end
 
   desc 'Restart application'
