@@ -1,4 +1,6 @@
 ThankYou::Application.routes.draw do
+  resources :cards
+
   resources :user_tokens
 
   resources :users
