@@ -4,7 +4,11 @@
 $ ->
   height = $(window).height()
   width = $(window).width()
-  $('.fullscreen').css({'background': "url(http://placekitten.com/g/#{width}/#{height})"})
+
+  setBackground = (url) ->
+    $('.fullscreen').css
+      'background': "url(#{url}) center no-repeat"
+      'background-size': 'cover'
 
   # https://api.vkontakte.ru/method/users.get?uid=#{id}&fields=photo
   # http://graph.facebook.com/#{id}/picture?type=square
@@ -36,10 +40,12 @@ $ ->
           'max-height': maxHeight
         $img.appendTo($gallery)
 
-  # initial
-  $('#card_message').keyup()
-
   $('.gallery').on 'click', 'img', ->
     $this = $(@)
     $this.addClass('active')
+    # fill in form
+    setBackground($this.data('img-url'))
 
+  # initial
+  $('#card_message').keyup()
+  setBackground("http://placekitten.com/g/#{width}/#{height}")
