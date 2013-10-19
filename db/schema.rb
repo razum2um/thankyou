@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019063919) do
+ActiveRecord::Schema.define(version: 20131019205745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(version: 20131019063919) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "img_url"
+    t.integer  "img_height"
+    t.integer  "img_width"
+    t.string   "tb_url"
+    t.integer  "tb_height"
+    t.integer  "tb_width"
   end
 
   add_index "cards", ["user_id"], name: "index_cards_on_user_id", using: :btree

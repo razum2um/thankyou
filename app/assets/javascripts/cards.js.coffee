@@ -23,15 +23,27 @@ $ ->
   #  'as_sitesearch': 'flickr.com'
   #  'callback': 'on_google_images'
 
-
   $('#card_message').keyup ->
     $this = $(@)
     $.get "/images?q=#{$this.val()}", (data) ->
-      return unless data?.responseData?.results?.length > 0
+      return unless (results = data?.responseData?.results)?.length > 0
       $gallery = $('.gallery')
+      maxWidth = Math.floor(($gallery.width() + 20) / 9) # +2 margin * 10
+      maxHeight = Math.floor($gallery.height() - 20)
       $gallery.empty()
-      $.each data.responseData.results, (i, result) ->
+      $.each results, (i, result) ->
         $img = $('<img>')
-        $img.attr({'src': result.tbUrl, 'height': result.tbHeight, 'width': result.tbWidth})
+        $img.attr
+          'src': result.tbUrl
+          'height': result.tbHeight
+          'width': result.tbWidth
+          'data-img-url': result.url
+        $img.css
+          'max-width': maxWidth
+          'max-height': maxHeight
         $img.appendTo($gallery)
+
+  $('.gallery img').click ->
+    $this = $(@)
+    $this.addClass('.active')
 
