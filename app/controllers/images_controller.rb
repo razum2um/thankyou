@@ -2,7 +2,7 @@ class ImagesController < ApplicationController
   def index
     q = params[:q].to_s
     #render(json: {}) and return if q.size < 3
-    q = ['cats'].shuffle.first # unless q
+    q = ['cats', 'kitten'].shuffle.first # unless q
 
     query  = {
       v: '1.0', rsz: 8, imgsz: 'huge', safe: 'active', as_rights: 'cc_noncommercial',
