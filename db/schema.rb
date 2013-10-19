@@ -11,18 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019034630) do
+ActiveRecord::Schema.define(version: 20131019063919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
-  create_table "cards", force: true do |t|
+  create_table "cards", id: false, force: true do |t|
+    t.uuid     "id",                        null: false
+    t.boolean  "public",     default: true
     t.string   "greeting"
     t.text     "message"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "public",     default: true
   end
 
   add_index "cards", ["user_id"], name: "index_cards_on_user_id", using: :btree
