@@ -41,6 +41,7 @@ gem 'unicorn'
 # Use Capistrano for deployment
 gem 'capistrano', group: :development
 gem 'capistrano-rvm', github: "capistrano/rvm"
+gem 'e20_ops_middleware', :require => 'e20/ops/middleware'
 
 # Use debugger
 gem 'pry-debugger', group: [:development, :test]
