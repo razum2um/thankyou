@@ -1,5 +1,8 @@
 ThankYou::Application.routes.draw do
   devise_for :users
+
+  get '/images' => 'images#index'
+
   resources :cards
 
   resources :user_tokens
