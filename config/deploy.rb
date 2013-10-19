@@ -29,17 +29,13 @@ set :rvm_type, :system
 set :rvm_ruby_version, '2.0.0'
 
 namespace :deploy do
-  task :prepare do
-    on roles :app do
-      execute "(cd #{release_path} && RAILS_ENV=production bundle exec rake assets:precompile)"
-      execute "(cd #{release_path} && RAILS_ENV=production bundle exec rake db:migrate)"
-    end
-  end
-
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      execute "kill -USR2 `cat #{release_path.join('tmp/pids/unicorn.pid')}`"
+      execute "(cd #{current_path} && RAILS_ENV=production bundle exec rake assets:precompile)"
+      execute "(cd #{current_path} && RAILS_ENV=production bundle exec rake db:migrate)"
+      execute "kill -QUIT `cat #{current_path.join('tmp/pids/unicorn.pid')}`"
+      execute "bundle exec unicorn_rails -c #{current_path}/config/unicorn.rb -E production -D"
     end
   end
 
@@ -53,5 +49,4 @@ namespace :deploy do
   end
 
   after :finishing, 'deploy:cleanup'
-  after 'deploy:updated', 'deploy:prepare'
 end
