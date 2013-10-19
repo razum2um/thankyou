@@ -30,8 +30,10 @@ set :rvm_ruby_version, '2.0.0'
 
 namespace :deploy do
   task :prepare do
-    execute "(cd #{release_path} && RAILS_ENV=production bundle exec rake assets:precompile)"
-    execute "(cd #{release_path} && RAILS_ENV=production bundle exec rake db:migrate)"
+    on roles :app do
+      execute "(cd #{release_path} && RAILS_ENV=production bundle exec rake assets:precompile)"
+      execute "(cd #{release_path} && RAILS_ENV=production bundle exec rake db:migrate)"
+    end
   end
 
   desc 'Restart application'
