@@ -25,6 +25,7 @@ set :bundle_binstubs, -> { shared_path.join('bin') }
 set :bundle_roles, :all
 
 # rvm
+set :rvm_bin_path, -> { shared_path.join('bin') }
 set :rvm_type, :system
 set :rvm_ruby_version, '2.0.0'
 
