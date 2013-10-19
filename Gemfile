@@ -52,5 +52,6 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                               :github => 'anjlab/bootstrap-rails'
 
 gem 'rspec'
+gem 'rspec-rails'
 gem 'simple_form'
 gem 'inherited_resources'
