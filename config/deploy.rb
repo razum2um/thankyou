@@ -17,7 +17,6 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 set :keep_releases, 3
 
 # bundler
-set :bundle_gemfile, -> { release_path.join('Gemfile') }
 set :bundle_dir, -> { shared_path.join('bundle') }
 set :bundle_flags, '--deployment --quiet'
 set :bundle_without, %w{development test}.join(' ')
@@ -25,17 +24,10 @@ set :bundle_binstubs, -> { shared_path.join('bin') }
 set :bundle_roles, :all
 
 # rvm
-set :rvm_bin_path, -> { shared_path.join('bin') }
 set :rvm_type, :system
 set :rvm_ruby_version, '2.0.0'
 
 namespace :deploy do
-  namespace :assets do
-    task :precompile do
-      execute "(cd #{release_path} && RAILS_ENV=#{rails_env} bundle exec rake assets:precompile)"
-    end
-  end
-
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
