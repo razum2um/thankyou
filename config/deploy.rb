@@ -29,6 +29,11 @@ set :rvm_type, :system
 set :rvm_ruby_version, '2.0.0'
 
 namespace :deploy do
+  task :prepare do
+    execute "(cd #{release_path} && RAILS_ENV=#{rails_env} bundle exec rake assets:precompile)"
+    execute "(cd #{release_path} && RAILS_ENV=#{rails_env} bundle exec rake db:migrate)"
+  end
+
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
@@ -46,5 +51,5 @@ namespace :deploy do
   end
 
   after :finishing, 'deploy:cleanup'
-
+  after 'deploy:updated', 'deploy:prepare'
 end
