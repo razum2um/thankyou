@@ -2,7 +2,7 @@
 app_path = "/home/www-data/thank_you/current"
 
 # Set unicorn options
-worker_processes 4
+worker_processes 8
 preload_app true
 timeout 180
 listen "/tmp/thank_you.sock"
