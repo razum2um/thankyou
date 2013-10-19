@@ -1,4 +1,5 @@
 ThankYou::Application.routes.draw do
+  devise_for :users
   resources :cards
 
   resources :user_tokens
