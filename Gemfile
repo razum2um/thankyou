@@ -43,7 +43,9 @@ gem 'capistrano', group: :development
 gem 'capistrano-rvm', github: "capistrano/rvm"
 
 # Use debugger
-gem 'debugger', group: [:development, :test]
+gem 'pry-debugger', group: [:development, :test]
+gem 'better_errors', group: [:development, :test]
+
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-openid'
