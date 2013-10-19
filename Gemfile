@@ -42,6 +42,7 @@ gem 'unicorn'
 gem 'capistrano', group: :development
 gem 'capistrano-rvm', github: "capistrano/rvm"
 gem 'capistrano-bundler'
+gem 'capistrano-rails'
 gem 'e20_ops_middleware', :require => 'e20/ops/middleware'
 
 # Use debugger
