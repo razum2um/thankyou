@@ -34,7 +34,7 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       execute "(cd #{current_path} && RAILS_ENV=production bundle exec rake assets:precompile)"
       execute "(cd #{current_path} && RAILS_ENV=production bundle exec rake db:migrate)"
-      execute "kill -QUIT `cat #{current_path.join('tmp/pids/unicorn.pid')}`"
+      execute "(kill -QUIT `cat #{current_path.join('tmp/pids/unicorn.pid')}`; exit 0)"
       execute "(cd #{current_path} && bundle exec unicorn_rails -c #{current_path}/config/unicorn.rb -E production -D)"
     end
   end
