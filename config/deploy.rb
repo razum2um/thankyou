@@ -35,7 +35,7 @@ namespace :deploy do
       execute "(cd #{current_path} && RAILS_ENV=production bundle exec rake assets:precompile)"
       execute "(cd #{current_path} && RAILS_ENV=production bundle exec rake db:migrate)"
       execute "kill -QUIT `cat #{current_path.join('tmp/pids/unicorn.pid')}`"
-      execute "bundle exec unicorn_rails -c #{current_path}/config/unicorn.rb -E production -D"
+      execute "(cd #{current_path} && bundle exec unicorn_rails -c #{current_path}/config/unicorn.rb -E production -D)"
     end
   end
 
