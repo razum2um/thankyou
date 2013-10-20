@@ -1,6 +1,6 @@
 class CardsController < InheritedResources::Base
   skip_before_filter :authenticate_user!, only: [:new]
-  load_and_authorize_resource except: [:new]
+  load_and_authorize_resource except: [:new, :create]
 
   def create
     @card = build_resource

@@ -11,6 +11,11 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
+  #def redirect_to(*args, &block)
+  #  binding.pry
+  #  super
+  #end
+
   protected
 
   def setup_evercookie
