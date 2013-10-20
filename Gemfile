@@ -50,9 +50,12 @@ gem 'pry-debugger', group: [:development, :test]
 gem 'pry-stack_explorer', group: [:development, :test]
 gem 'better_errors', group: [:development, :test]
 
+
 gem 'devise'
+gem 'cancan'
 gem 'omniauth'
 gem 'omniauth-openid'
+gem 'evercookie'
 gem 'slim-rails'
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                               :github => 'anjlab/bootstrap-rails'
