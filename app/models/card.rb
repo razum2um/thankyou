@@ -1,4 +1,5 @@
 class Card < ActiveRecord::Base
   belongs_to :user
-  validates :message, presence: true
+  belongs_to :author, class_name: 'User'
+  validates :message, :author, presence: true
 end
