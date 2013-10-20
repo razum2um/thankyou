@@ -17,3 +17,4 @@
 config/database.yml
 zeus.json
 custom_plan.rb
+config/*.yml

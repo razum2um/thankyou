@@ -55,7 +55,12 @@ gem 'better_errors', group: [:development, :test]
 gem 'devise'
 gem 'cancan'
 gem 'omniauth'
-gem 'omniauth-openid'
+gem 'omniauth-github', github: 'intridea/omniauth-github'
+gem 'omniauth-oauth2', github: 'intridea/omniauth-oauth2' # Vkontakte CSRF breakage fix
+gem 'omniauth-vkontakte', github: 'gazay/omniauth-vkontakte'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2', github: 'zquestz/omniauth-google-oauth2'
+
 gem 'evercookie'
 gem 'slim-rails'
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',

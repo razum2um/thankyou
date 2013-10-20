@@ -1,3 +1,5 @@
+require 'net/http'
+
 class ImagesController < ApplicationController
   def index
     q = params[:q].to_s
@@ -17,7 +19,7 @@ class ImagesController < ApplicationController
     )
 
     json = Rails.cache.fetch(uri, expires_in: 1.minute) do
-      Net::HTTP.get(uri)
+      ::Net::HTTP.get(uri)
     end
 
     render json: json

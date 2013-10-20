@@ -8,5 +8,14 @@ html
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   body
+    #auth
+      - if current_user.guest?
+        | You can login and manage cards
+        = link_to "FB", user_omniauth_authorize_path(:facebook), class: 'social-link is-fb'
+        = link_to "Google", user_omniauth_authorize_path(:google_oauth2), class: 'social-link is-google'
+        = link_to "VK", user_omniauth_authorize_path(:vkontakte), class: 'social-link is-vk'
+        = link_to "GH", user_omniauth_authorize_path(:github), class: 'social-link is-gh'
+      - else
+        = "Hi! #{current_user}"
     #preload
     = yield

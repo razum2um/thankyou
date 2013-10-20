@@ -232,6 +232,29 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
+  begin
+    ssl_fix = {}
+    social_apps = YAML.load_file("config/social_apps.yml")[Rails.env]
+
+    config.omniauth :github,
+      social_apps['github']['appId'],
+      social_apps['github']['secret'],
+      client_options: ssl_fix #, display: 'popup'
+    config.omniauth :google_oauth2,
+      social_apps['google_oauth2']['appId'],
+      social_apps['google_oauth2']['secret'],
+      client_options: ssl_fix #, display: 'popup'
+    config.omniauth :vkontakte,
+      social_apps['vkontakte']['appId'],
+      social_apps['vkontakte']['secret'],
+      client_options: ssl_fix #, display: 'popup'
+    config.omniauth :facebook,
+      social_apps['facebook']['appId'],
+      social_apps['facebook']['secret'],
+      client_options: ssl_fix #, image_size: 'large'
+  rescue
+    Rails.logger.error "Can not initialize social apps: #{$!}"
+  end
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
