@@ -9,14 +9,23 @@ $ ->
   $preload = $('#preload')
 
   setBackground = (url, width, height) ->
-    #ratio = _.min [Math.floor(100 * _width / width), Math.floor(100 * _height / height)]
+    bg_width = _width
+    bg_height = height * (_width / width)
+
     $fullscreen.css
       'background-image': "url(#{url})"
       'background-repeat': 'no-repeat'
+      'background-size': "#{bg_width}px #{bg_height}px"
     #$fullscreen.animate
     #  'background-size': "#{ratio}% #{ratio}%"
     #, 1000
-    $fullscreen.backgroundDraggable()
+    $fullscreen.backgroundDraggable
+      width: bg_width
+      height: bg_height
+
+    $fullscreen.on 'moved', (e, coords) ->
+      $('#card_background_position_x').val(coords.x)
+      $('#card_background_position_y').val(coords.y)
 
   # https://api.vkontakte.ru/method/users.get?uid=#{id}&fields=photo
   # http://graph.facebook.com/#{id}/picture?type=square
@@ -51,15 +60,22 @@ $ ->
         $preloadImg = $('<img>')
         $preloadImg.attr
           'src': result.url
-        #$preloadImg.load ->
-        #  $fullscreen.backgroundDraggable()
         $preloadImg.appendTo($preload)
 
 
   $gallery.on 'click', 'img', ->
     $this = $(@)
     $this.addClass('active')
+
     # fill in form
+    $('#card_img_url').val($this.data('img-url'))
+    $('#card_img_width').val($this.data('img-width'))
+    $('#card_img_height').val($this.data('img-height'))
+
+    $('#card_tb_url').val($this.data('tb-url'))
+    $('#card_tb_width').val($this.data('tb-width'))
+    $('#card_tb_height').val($this.data('tb-height'))
+
     setBackground($this.data('img-url'), $this.data('img-width'), $this.data('img-height'))
 
 

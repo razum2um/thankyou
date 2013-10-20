@@ -39,15 +39,15 @@
       if (!$bg || !src) return
 
       // Get the image's width and height if bound
-      var img = { width: 0, height: 0 }
-      if (options.bound) {
-        var i = new Image
-        i.onload = function() {
-          img.width = i.width
-          img.height = i.height
-        }
-        i.src = src[1]
-      }
+      var img = { width: options.width, height: options.height }
+      //if (options.bound) {
+      //  var i = new Image
+      //  i.onload = function() {
+      //    img.width = i.width
+      //    img.height = i.height
+      //  }
+      //  i.src = src[1]
+      //}
 
       $this.on('mousedown.dbg touchstart.dbg', function(e) {
         e.preventDefault()
@@ -81,6 +81,7 @@
           y0 = y
 
           $this.css('background-position', xPos + 'px ' + yPos + 'px')
+		  $this.trigger('moved', {x: xPos, y: yPos})
         })
       })
 
@@ -90,6 +91,8 @@
 
   $.fn.backgroundDraggable.defaults = {
     bound: true
+  , width: 0
+  , height: 0
   , axis: undefined
   }
 }(jQuery);

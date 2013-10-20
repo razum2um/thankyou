@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131020062243) do
+ActiveRecord::Schema.define(version: 20131020131407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
   create_table "cards", id: false, force: true do |t|
-    t.uuid     "id",                        null: false
-    t.boolean  "public",     default: true
+    t.uuid     "id",                                   null: false
+    t.boolean  "public",                default: true
     t.text     "message"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20131020062243) do
     t.integer  "tb_height"
     t.integer  "tb_width"
     t.integer  "author_id"
+    t.integer  "background_position_x", default: 0
+    t.integer  "background_position_y", default: 0
   end
 
   add_index "cards", ["author_id"], name: "index_cards_on_author_id", using: :btree

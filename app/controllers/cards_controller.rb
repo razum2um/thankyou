@@ -13,6 +13,11 @@ class CardsController < InheritedResources::Base
 
   def resource_params
     return [{}] if action_name == 'new'
-    [params.require(:card).permit(:message, :public)]
+    [params.require(:card).permit(
+      :message, :public,
+      :img_url, :img_width, :img_height,
+      :tb_url, :tb_width, :tb_height,
+      :background_position_x, :background_position_y
+    )]
   end
 end
