@@ -1,19 +1,21 @@
-.card-wrapper
-  = simple_form_for(@card, wrapper: :bootstrap3_horizontal,
-    # defaults: {right_column_html: {class: "col-lg-3 col-md-3"},
-    # label_html: {class: "col-lg-2 col-md-2"} },
-    html: {class: "form-horizontal", role: "form"}) do |f|
+.fullscreen
+  .body-wrapper
+    .card-wrapper
+      = simple_form_for(@card, wrapper: :bootstrap3_horizontal,
+        # defaults: {right_column_html: {class: "col-lg-3 col-md-3"},
+        # label_html: {class: "col-lg-2 col-md-2"} },
+        html: {class: "form-horizontal", role: "form"}) do |f|
 
-    /= f.input :greeting
-    = f.input :message
-    = f.input :public, as: :radio_buttons, collection: { t('cards.public') => :public, t('cards.private') => :private }
-    = f.input :img_url, as: :hidden
-    = f.input :img_width, as: :hidden
-    = f.input :img_height, as: :hidden
-    = f.input :tb_url, as: :hidden
-    = f.input :tb_width, as: :hidden
-    = f.input :tb_height, as: :hidden
-    = f.input :background_position_x, as: :hidden
-    = f.input :background_position_y, as: :hidden
-    = f.submit
-#gallery
+        /= f.input :greeting
+        = f.input :message
+        = f.input :public, as: :radio_buttons, collection: { t('cards.public') => :public, t('cards.private') => :private }
+        = f.input :img_url, as: :hidden
+        = f.input :img_width, as: :hidden
+        = f.input :img_height, as: :hidden
+        = f.input :tb_url, as: :hidden
+        = f.input :tb_width, as: :hidden
+        = f.input :tb_height, as: :hidden
+        = f.input :background_position_x, as: :hidden
+        = f.input :background_position_y, as: :hidden
+        = f.submit
+    #gallery

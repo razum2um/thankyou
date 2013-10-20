@@ -1,2 +1,4 @@
-.card-wrapper
-  p= @card.message
+.fullscreen(style=card_style(@card))
+  .body-wrapper
+    .card-wrapper
+      p= @card.message

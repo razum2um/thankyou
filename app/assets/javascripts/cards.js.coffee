@@ -80,5 +80,6 @@ $ ->
 
 
   # initial
-  $('#card_message').focus().keyup()
-  setBackground("http://placekitten.com/g/#{_width}/#{_height}", _width, _height)
+  if $fullscreen.css('background-image') == 'none'
+    $('#card_message').focus().keyup()
+    setBackground("http://placekitten.com/g/#{_width}/#{_height}", _width, _height)
