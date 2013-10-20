@@ -262,6 +262,7 @@ DEPENDENCIES
   omniauth
   omniauth-openid
   pg
+  pry
   pry-debugger
   pry-stack_explorer
   rails (= 4.0.0)
