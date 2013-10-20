@@ -49,3 +49,38 @@
 
 #preload
   display: none
+
+#auth
+  position: absolute
+  top: 0
+  right: 0
+  z-index: 2
+  padding: 0 0 5px 10px
+  background: rgba(255,255,255, 0.5)
+  border-radius: 0 0 0 5px
+
+  .social-link
+    display: inline-block
+    height: 45px
+    width: 45px
+
+  .is-vkontakte
+    background: url(/assets/vkontakte.png)
+    &.active
+      background: url(/assets/vkontakte_i.png)
+  .is-twitter
+    background: url(/assets/twitter.png)
+    &.active
+      background: url(/assets/twitter_i.png)
+  .is-google_oauth2
+    background: url(/assets/google_oauth2.png)
+    &.active
+      background: url(/assets/google_oauth2_i.png)
+  .is-facebook
+    background: url(/assets/facebook.png)
+    &.active
+      background: url(/assets/facebook_i.png)
+  .is-github
+    background: url(/assets/github.png)
+    &.active
+      background: url(/assets/github_i.png)

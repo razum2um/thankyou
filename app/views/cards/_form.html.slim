@@ -8,7 +8,9 @@
 
         /= f.input :greeting
         = f.input :message
-        = f.input :public, as: :radio_buttons, collection: { t('cards.public') => :public, t('cards.private') => :private }
+        = f.input :public, as: :radio_buttons, collection: { 'Public' => true, 'Private' => false }
+        - unless current_user.guest?
+          = f.input :anonymously, as: :radio_buttons, collection: { 'Anonymously' => true, "As: #{current_user.name}" => false }
         = f.input :img_url, as: :hidden
         = f.input :img_width, as: :hidden
         = f.input :img_height, as: :hidden

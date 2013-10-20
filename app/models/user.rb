@@ -7,6 +7,14 @@ class User < ActiveRecord::Base
 
   has_many :user_tokens
 
+  def has_social?(social)
+    providers.include?(social.to_s)
+  end
+
+  def providers
+    @providers ||= user_tokens.pluck(:provider)
+  end
+
   def to_s
     name
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131020131407) do
+ActiveRecord::Schema.define(version: 20131020185422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20131020131407) do
     t.integer  "author_id"
     t.integer  "background_position_x", default: 0
     t.integer  "background_position_y", default: 0
+    t.boolean  "anonymously",           default: true
   end
 
   add_index "cards", ["author_id"], name: "index_cards_on_author_id", using: :btree

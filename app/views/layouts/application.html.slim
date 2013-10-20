@@ -9,14 +9,14 @@ html
     = csrf_meta_tags
   body
     #auth
-      - if current_user.guest?
-        | You can login and manage cards
-      - else
-        = "Hi! #{current_user}"
-      = link_to_social current_user, :facebook
-      = link_to_social current_user, :twitter
-      = link_to_social current_user, :google_oauth2, 'Google'
-      = link_to_social current_user, :vkontakte
-      = link_to_social current_user, :github
+      /- if current_user.guest?
+        span= "You can login and manage cards"
+      /- else
+        span= "Hi! #{current_user}"
+      = link_to_social current_user, :facebook, ''
+      = link_to_social current_user, :twitter, ''
+      = link_to_social current_user, :google_oauth2, ''
+      = link_to_social current_user, :vkontakte, ''
+      = link_to_social current_user, :github, ''
     #preload
     = yield

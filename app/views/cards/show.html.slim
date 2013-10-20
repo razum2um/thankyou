@@ -2,3 +2,9 @@
   .body-wrapper
     .card-wrapper
       p= @card.message
+      p
+        | Share the link
+      = text_area_tag '_', card_url(@card)
+      - unless @card.public?
+        p
+          | Only this person will have access to it
