@@ -59,6 +59,7 @@ gem 'omniauth-github', github: 'intridea/omniauth-github'
 gem 'omniauth-oauth2', github: 'intridea/omniauth-oauth2' # Vkontakte CSRF breakage fix
 gem 'omniauth-vkontakte', github: 'gazay/omniauth-vkontakte'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter', github: 'arunagw/omniauth-twitter'
 gem 'omniauth-google-oauth2', github: 'zquestz/omniauth-google-oauth2'
 
 gem 'evercookie'

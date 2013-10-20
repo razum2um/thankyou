@@ -236,6 +236,10 @@ Devise.setup do |config|
     ssl_fix = {}
     social_apps = YAML.load_file("config/social_apps.yml")[Rails.env]
 
+    config.omniauth :twitter,
+      social_apps['twitter']['appId'],
+      social_apps['twitter']['secret'],
+      client_options: ssl_fix #, display: 'popup'
     config.omniauth :github,
       social_apps['github']['appId'],
       social_apps['github']['secret'],

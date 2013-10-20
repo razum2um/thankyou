@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   # :recoverable, :rememberable,
   devise :omniauthable, :trackable
 
+  has_many :user_tokens
+
   def to_s
     name
   end
