@@ -6,5 +6,6 @@ class Ability
     can :read, Card, public: true
     can :read, Card, user_id: user.id
     can :manage, Card, author_id: user.id
+    can :manage, User, id: user.id
   end
 end

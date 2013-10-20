@@ -1,0 +1,28 @@
+.fullscreen
+  .body-wrapper
+    .table-wrapper
+      - if @for_me.present?
+        table
+          - @for_me.each do |card|
+            tr
+              td
+                = card.anonymously? ? 'Anonymous' : card.author
+              td
+                = image_tag card.tb_url
+              td
+                = card.message
+              td
+                = link_to card_path(card), method: :delete, data: { confirm: 'Are you sure?' }
+    .table-wrapper
+      - if @by_me.present?
+        table
+          - @by_me.each do |card|
+            tr
+              td
+                = card.public? ? 'Public' : card.user
+              td
+                = image_tag card.tb_url
+              td
+                = card.message
+              td
+                = link_to card_path(card), method: :delete, data: { confirm: 'Are you sure?' }

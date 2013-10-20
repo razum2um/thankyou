@@ -12,7 +12,9 @@ html
       /- if current_user.guest?
         span= "You can login and manage cards"
       /- else
-        span= "Hi! #{current_user}"
+      - unless current_user.guest?
+        = link_to current_user, class: 'header-link is-profile' do
+          = image_tag(current_user.image.presence || '/assets/guest.png')
       = link_to_social current_user, :facebook, ''
       = link_to_social current_user, :twitter, ''
       = link_to_social current_user, :google_oauth2, ''

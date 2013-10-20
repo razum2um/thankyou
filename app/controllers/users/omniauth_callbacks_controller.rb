@@ -6,12 +6,20 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if !current_user.guest?
       token.user = current_user
       token.save!
-      redirect_to(root_path) and return
-    elsif (user = token.user).nil?
+      user = current_user
+    elsif token.user.present?
+      user = token.user
+    else
       user = token.build_user(name: auth.info.name, guest: false)
       user.save!
       token.save!
     end
+
+    if user.image.blank? && auth.info.image.present?
+      user.image = auth.info.image
+      user.save!
+    end
+
     sign_in_and_redirect user, :event => :authentication
   end
 

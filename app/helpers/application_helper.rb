@@ -4,9 +4,9 @@ module ApplicationHelper
       user.has_social?(social),
       (link || social.capitalize),
       user_omniauth_authorize_path(social),
-      class: "social-link is-#{social}"
+      class: "header-link is-#{social}"
     ) do |name|
-      "<span class='social-link is-#{social} active'>#{name}</span>".html_safe
+      "<span class='header-link is-#{social} active'>#{name}</span>".html_safe
     end
   end
 end
